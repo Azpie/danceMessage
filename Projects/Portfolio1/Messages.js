@@ -1,24 +1,36 @@
-const getRandMess = () => {
-    const random = Math.floor(Math.random() * 10); //genertes a random number
-    //if else staments so if the number equals 0 then 'return' Marathon
-    
-    if (random === 0) {
-      return 'Do 10 Plies';
-    } else if (random === 1) {
-      return 'Practice Tendu';
-    } else if (random === 2) {
-      return 'Work on double Pirouette';
-    }
-    else if (random === 3) {
-        return 'Practice fouettes';
-    }
-    else if (random === 4) {
-        return 'Do a 15 minute stretch';
-    }
-    else if (random === 5) {
-        return 'Pointe work for 10 minutes';
-      }
-    else {
-        return 'Watch black swan'
-    }
-};
+function generateRandomTimetable(num) {
+    return Math.floor(Math.random() * num)
+ }
+ 
+ const timetableData = {
+day: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+time: ['3pm','4pm', '5pm','6pm','7pm','8pm','9pm'],
+style: ['Ballet', 'Jazz', 'Tap', 'Hip hop', 'Contemporary', 'Lyrical','Acro']
+ }
+ 
+ let personalTimetable = []
+ 
+ for(let today in timetableData) {
+   let option = generateRandomTimetable(timetableData[today].length)
+ 
+   switch(today) {
+     case 'day':
+       personalTimetable.push(`Scheduled day: "${timetableData[today][option]}".`)
+       break
+     case 'time':
+       personalTimetable.push(`Scheduled time: "${timetableData[today][option]}".`)
+       break
+     case 'style':
+       personalTimetable.push(`Scheduled dance style: "${timetableData[today][option]}".`)
+       break
+     default:
+       personalTimetable.push('Maybe just spend the day stretching.')
+   }
+ }
+ 
+ function formatTodaysSchedule(schedule) {
+    const joinUp = personalTimetable.join('\n')
+   console.log(joinUp)
+ }
+ 
+ formatTodaysSchedule(personalTimetable);
